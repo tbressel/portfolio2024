@@ -34,6 +34,7 @@ const IconLogin = styled.div`
     }
 `;
 const TextLogin = styled.p`
+cursor: pointer;
     font-size: 16px;
     color: ${props => props.theme.colors.gray11};
 `;

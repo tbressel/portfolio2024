@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { ThemeContext } from '../../contexts/useTheme';
 import { useContext } from 'react';
 import Tag from './subchild-components/Tag';
+import { NavLink } from 'react-router-dom';
 
 const MainContainer = styled.div`
     margin: 60px 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     
-    max-width: 375px;
-   min-width: 275px;
+    max-width: 575px;
+    min-width: 275px;
 
     padding: 20px;
     border-radius: 10px;
@@ -33,10 +33,14 @@ const Title = styled.div`
 `
 const Screen = styled.div`
     width: 100%;
-    height: 300px;
     border-radius: 10px;
     background-color: ${props => props.theme.colors.gray8};
     margin: 20px 0;
+    img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
 `
 const Links = styled.div`
     display: flex;
@@ -59,50 +63,64 @@ const TagsList = styled.div`
 `
 const Description = styled.div`
     p {
-        font-size: 14px;
+        font-size: 1.2rem;
         line-height: 24px;
         font-family: 'Mukta Regular';
         color: ${props => props.theme.colors.gray12};
     }
 `
 
+interface CardData {
+    titre: string;
+    soustitre: string;
+    image: string;
+    leftlinktxt: string;
+    rightlinktxt: string;
+    leftlinkurl: string;
+    rightlinkurl: string;
+    tags: string[];
+    description: string;
+}
+
+interface ProjectCardProps {
+    data: CardData;
+}
 
 
-
-const ProjectCard = () => { 
+const ProjectCard = (props: ProjectCardProps) => { 
 
     const colors = useContext(ThemeContext);
 
     return (
         <MainContainer theme={colors}>
             <Title theme={colors}>
-                <h4>Datadunk <span>Coach Interface</span></h4>
+                <h4>{props.data.titre} <span>{props.data.soustitre}</span></h4>
             </Title>
 
             <Screen theme={colors}>
-
+                <img src={`./assets/${props.data.image}`} alt="" />
             </Screen>
 
             <Links theme={colors}>
-                <p>LIVE DEMO</p>
-                <p>SEE ON GITHUB</p>
+                <NavLink to={props.data.leftlinkurl}>                    
+                <p>{props.data.leftlinktxt}</p>
+                </NavLink>
+                <NavLink to={props.data.rightlinkurl}>
+                <p>{props.data.rightlinktxt}</p>
+                </NavLink>
             </Links>
             
             <TagsList theme={colors}>
-                <Tag tag={'PHP'}/>
-                <Tag tag={'Javascript'}/>
-                <Tag tag={'HTML'}/>
-                <Tag tag={'CSS'}/>
-                <Tag tag={'MySQL'}/>
-                <Tag tag={'Apache'}/>
+                {props.data.tags.map((tag, index) => {
+                    return (
+                        <Tag key={index} tag={tag} />
+                    )
+                })}
+
             </TagsList>
 
             <Description theme={colors}>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <p>{props.data.description}</p>
             </Description>
         </MainContainer>
     )

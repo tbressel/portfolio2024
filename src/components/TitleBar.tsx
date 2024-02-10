@@ -2,7 +2,7 @@
 ////////////////////////////////////////////////////////
 //////////////////   IMPORTATIONS   ////////////////////
 ////////////////////////////////////////////////////////
-
+import jsonData  from '../datas/datas.json';
 import Links from './child-components/Links';
 import styled from 'styled-components';
 import { useContext } from 'react';
@@ -16,7 +16,7 @@ const Subtitle = styled.h2`
 `
 
 const MainContainer = styled.div`
-    margin: 60px 0;
+    margin: 20px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -59,14 +59,14 @@ const Photo = styled.div`
         display: block;
         min-width: 350px;
         min-height: 350px;
-        border-radius: 50%;
-        background-image: url("./assets/images/image.jpg");
+        border-radius: 50%; 
+        background-image: url(./assets/${jsonData.TitleBar.image});
         background-size: 100%;
         background-repeat: no-repeat;
         background-position: center;
         border: 4px solid ${props => props.theme.colors.gray7};
         filter: grayscale(100%);
-        box-shadow: ${props => props.theme.colors.gray11} -70px 50px 150px 10px ;
+        box-shadow: ${props => props.theme.colors.gray8} -70px 50px 150px 10px ;
         transition: 200ms ease-in-out;
     }
     `;
@@ -79,11 +79,10 @@ const TitleBar = () => {
     return (
         <MainContainer>
             <MainInfos >
-            <Title theme={colors}>Thomas Bressel</Title>
-            <Subtitle theme={colors}>Développeur web Fullstack</Subtitle>
+            <Title theme={colors}>{jsonData.TitleBar.titre}</Title>
+            <Subtitle theme={colors}>{jsonData.TitleBar.soustitre}</Subtitle>
             <Links />
             </MainInfos>
-
             <Photo theme={colors}></Photo>
         </MainContainer>
     );

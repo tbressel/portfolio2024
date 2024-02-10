@@ -24,8 +24,7 @@ const MainContainer = styled.div`
     align-items: center;
     padding: 5px 20px;
     border-bottom: 2px solid ${props => props.theme.colors.gray8};
-`;  
-
+` 
 const Button = styled.div`
     cursor: pointer;
     margin: 10px;
@@ -38,7 +37,11 @@ const Button = styled.div`
         padding: 5px;
         fill: ${props => props.theme.colors.gray12};      
     }
-`;
+    &:hover {
+      transition: 200ms ease-in-out;
+        background-color: ${props => props.theme.colors.gray8};
+    }
+`
 
 ////////////////////////////////////////////////////////////
 //////////////////   MAIN COMPONENT   //////////////////////

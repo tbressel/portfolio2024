@@ -1,14 +1,18 @@
 ////////////////////////////////////////////////////////
 //////////////////   IMPORTATIONS   ////////////////////
 ////////////////////////////////////////////////////////
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Mask from './components/Mask';
+
 // Contexts importations
+
 import ThemeContextProvider from './contexts/useTheme';
 import { ThemeContext } from './contexts/useTheme';
 
 import Home from './Home';
+import Error from './Error';
 
 import { Reset } from 'styled-reset';
 import styled from 'styled-components';
@@ -22,6 +26,12 @@ const GlobalStyle = styled.main`
   min-height: 100vh;
   min-width: 375px;
   font-family: 'Inter Medium', sans-serif;
+
+a {
+  text-transform: none;
+  text-decoration: none;
+}
+
 
   h1 {
     font-size: 2rem;
@@ -106,8 +116,11 @@ const App = () => {
   return (
 
       <ThemeContextProvider>
+
         <Reset />
+
         <Content />
+  
       </ThemeContextProvider>
   );
 }
@@ -126,6 +139,7 @@ const Content = () => {
         <GlobalStyle theme={colors}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/*" element={<Error />} />
           </Routes>
         </GlobalStyle>
         </BrowserRouter>

@@ -1,26 +1,18 @@
-////////////////////////////////////////////////////////
-//////////////////   IMPORTATIONS   ////////////////////
-////////////////////////////////////////////////////////
 
-
-import Filterbar from './components/FilterBar';
 import HeaderBar from './components/HeaderBar';
 import ProjectList from './components/ProjectList';
 import TitleBar from './components/TitleBar';
 
-////////////////////////////////////////////////////////////
-//////////////////   MAIN COMPONENT   //////////////////////
-////////////////////////////////////////////////////////////
-
 const Home = () => {
+
 
     return (
         <div>
-            <HeaderBar/>
+            <HeaderBar />
             <TitleBar />
-            <Filterbar />
-            <ProjectList />
+            <ProjectList/>
         </div>
-    )   
+    );
 }
+
 export default Home;
