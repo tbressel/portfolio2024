@@ -102,10 +102,10 @@ const ProjectCard = (props: ProjectCardProps) => {
             </Screen>
 
             <Links theme={colors}>
-                <NavLink to={props.data.leftlinkurl}>                    
+                <NavLink to={props.data.leftlinkurl} target="_blank">                    
                 <p>{props.data.leftlinktxt}</p>
                 </NavLink>
-                <NavLink to={props.data.rightlinkurl}>
+                <NavLink to={props.data.rightlinkurl} target="_blank">
                 <p>{props.data.rightlinktxt}</p>
                 </NavLink>
             </Links>
