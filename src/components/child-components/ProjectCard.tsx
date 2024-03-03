@@ -78,7 +78,7 @@ interface CardData {
     rightlinktxt: string;
     leftlinkurl: string;
     rightlinkurl: string;
-    tags: string[];
+    tags: TagProps[];
     description: string;
 }
 
@@ -86,7 +86,10 @@ interface ProjectCardProps {
     data: CardData;
 }
 
-
+interface TagProps {
+    name: string;
+    svg: string;
+  }
 const ProjectCard = (props: ProjectCardProps) => { 
 
     const colors = useContext(ThemeContext);
@@ -110,10 +113,14 @@ const ProjectCard = (props: ProjectCardProps) => {
                 </NavLink>
             </Links>
             
+
+
+
             <TagsList theme={colors}>
                 {props.data.tags.map((tag, index) => {
                     return (
-                        <Tag key={index} tag={tag} />
+                        <Tag key={index} name={tag.name} svg={tag.svg} />
+                        // <Tag key={index} tag={tag} />
                     )
                 })}
 
