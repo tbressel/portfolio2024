@@ -131,6 +131,21 @@ const Links = () => {
           </NavLink>
         ) : null}
 
+        {(jsonData.Links.malt.display === "true") ? (
+          <NavLink to={jsonData.Links.malt.link} target="_blank">
+            <LinkContainer theme={colors}>
+              <LinkIcon theme={colors}>
+                <div dangerouslySetInnerHTML={{ __html: jsonData.Links.malt.svg }} />
+              </LinkIcon>
+              <LinkText theme={colors}>
+                <p>
+                  {jsonData.Links.malt.text}
+                </p>
+              </LinkText>
+            </LinkContainer>
+          </NavLink>
+        ) : null}
+
       </MainContainer>
     </>
   );
