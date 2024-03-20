@@ -1,8 +1,9 @@
 {
     "TitleBar": {
         "titre": "Thomas Bressel",
-        "soustitre": "Développeur Web Fullstack",
-        "image": "images/image.jpg"
+        "soustitre": "Développeur Web Backend",
+        "image": "images/image.jpg",
+        "introduce": "Salut ! Bien qu'ayant des compétences fullstack, je suis principalement orienté vers le développement Back-end, avec des technos allant de Apache à Node JS en passant par Redis, MySQL."
     },
     "Links": {
         "contact": {

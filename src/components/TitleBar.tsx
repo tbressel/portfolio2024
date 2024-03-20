@@ -33,7 +33,7 @@ const MainContainer = styled.div`
         @media screen and (max-width: 1028px) {
             flex-direction: column;
         }
-`;  
+`  
 
 const MainInfos = styled.div`
     display: flex;
@@ -49,7 +49,7 @@ const MainInfos = styled.div`
     row-gap: 0px;
     align-items: center;        
     }
-`;
+`
 
 const Photo = styled.div`
     display: none;
@@ -69,7 +69,17 @@ const Photo = styled.div`
         box-shadow: ${props => props.theme.colors.gray8} -70px 50px 150px 10px ;
         transition: 200ms ease-in-out;
     }
-    `;
+`
+const Introduce = styled.p`
+ 
+    color: ${props => props.theme.colors.gray12};
+    text-align: left;
+    word-break: break-word;
+    font-style: italic;
+    font-weight: 100;
+    font-family: 'Mukta Light';
+
+`
 ////////////////////////////////////////////////////////////
 //////////////////   MAIN COMPONENT   //////////////////////
 ////////////////////////////////////////////////////////////
@@ -82,6 +92,12 @@ const TitleBar = () => {
             <Title theme={colors}>{jsonData.TitleBar.titre}</Title>
             <Subtitle theme={colors}>{jsonData.TitleBar.soustitre}</Subtitle>
             <Links />
+            <div>
+
+            <Introduce theme={colors}>
+            {jsonData.TitleBar.introduce}
+            </Introduce>
+            </div>
             </MainInfos>
             <Photo theme={colors}></Photo>
         </MainContainer>
