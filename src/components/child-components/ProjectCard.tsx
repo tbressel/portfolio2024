@@ -58,6 +58,8 @@ const Links = styled.div`
 const TagsList = styled.div`
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
     gap: 10px;
     margin: 20px 0;
 `
@@ -78,7 +80,7 @@ interface CardData {
     rightlinktxt: string;
     leftlinkurl: string;
     rightlinkurl: string;
-    tags: string[];
+    tags: TagProps[];
     description: string;
 }
 
@@ -86,7 +88,10 @@ interface ProjectCardProps {
     data: CardData;
 }
 
-
+interface TagProps {
+    name: string;
+    svg: string;
+  }
 const ProjectCard = (props: ProjectCardProps) => { 
 
     const colors = useContext(ThemeContext);
@@ -110,10 +115,14 @@ const ProjectCard = (props: ProjectCardProps) => {
                 </NavLink>
             </Links>
             
+
+
+
             <TagsList theme={colors}>
                 {props.data.tags.map((tag, index) => {
                     return (
-                        <Tag key={index} tag={tag} />
+                        <Tag key={index} name={tag.name} svg={tag.svg} />
+                        // <Tag key={index} tag={tag} />
                     )
                 })}
 
