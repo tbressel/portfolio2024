@@ -19,7 +19,7 @@ const Avatar = styled.div`
     width: 78px;
     height: 78px;
     border-radius: 50%;
-    background-image: url("./assets/images/image.jpg");
+    background-image: url("./assets/images/PhotoCV_1_mini.webp");
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
