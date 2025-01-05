@@ -156,33 +156,51 @@ const Filterbar = ({ toggleSelectBox, setToggleSelectBox, changedValue, handleCh
 
   return (
     <MainContainer>
-      {toggleSelectBox ? (
-        <Select theme={colors} name={jsonData.FilterBar.selectname} id={jsonData.FilterBar.selectid} onChange={handleSelectedValue} value={changedValue}>
-          <Option theme={colors} value="0">Tous les jeux</Option> 
-          {jsonData.FilterBar.options2.map((option, index) => (
-            <Option theme={colors} key={index} value={option.value}>{option.text}</Option>
-          ))}
-        </Select>
-      ) : (
-        <Select theme={colors} name={jsonData.FilterBar.selectname} id={jsonData.FilterBar.selectid} onChange={handleSelectedValue} value={changedValue}>
-          <Option theme={colors} value="0">Tous les projets</Option> 
-          {jsonData.FilterBar.options.map((option, index) => (
-            <Option theme={colors} key={index} value={option.value}>{option.text}</Option>
-          ))}
-        </Select>
-      )}
-      <TitleSection theme={colors}>{jsonData.FilterBar.titre}</TitleSection>
-      <SwitchContainer theme={colors} onClick={handleToggleButton}>
-        <ButtonContainer theme={colors}>
-          <ButtonLeft theme={colors} className={!toggleSelectBox ? 'active' : ''}>
-            <p>{jsonData.FilterBar.button.textleft}</p>
-          </ButtonLeft>
-          <ButtonRight theme={colors} className={toggleSelectBox ? 'active' : ''}>
-            <p>{jsonData.FilterBar.button.textright}</p>
-          </ButtonRight>
-        </ButtonContainer>
-      </SwitchContainer>
-    </MainContainer>
+    {toggleSelectBox ? (
+      <Select
+        theme={colors}
+        name={jsonData.FilterBar.selectname}
+        id={jsonData.FilterBar.selectid}
+        onChange={handleSelectedValue}
+        value={changedValue}
+        aria-label="Sélectionner un jeu"
+      >
+        <Option theme={colors} value="0">Tous les jeux</Option>
+        {jsonData.FilterBar.options2.map((option, index) => (
+          <Option theme={colors} key={index} value={option.value}>
+            {option.text}
+          </Option>
+        ))}
+      </Select>
+    ) : (
+      <Select
+        theme={colors}
+        name={jsonData.FilterBar.selectname}
+        id={jsonData.FilterBar.selectid}
+        onChange={handleSelectedValue}
+        value={changedValue}
+        aria-label="Sélectionner un projet"
+      >
+        <Option theme={colors} value="0">Tous les projets</Option>
+        {jsonData.FilterBar.options.map((option, index) => (
+          <Option theme={colors} key={index} value={option.value}>
+            {option.text}
+          </Option>
+        ))}
+      </Select>
+    )}
+    <TitleSection theme={colors} aria-live="polite">{jsonData.FilterBar.titre}</TitleSection>
+    <SwitchContainer theme={colors} onClick={handleToggleButton} aria-label="Basculer entre les options de jeux et de projets">
+      <ButtonContainer theme={colors}>
+        <ButtonLeft theme={colors} className={!toggleSelectBox ? 'active' : ''} aria-label="Voir les jeux">
+          <p>{jsonData.FilterBar.button.textleft}</p>
+        </ButtonLeft>
+        <ButtonRight theme={colors} className={toggleSelectBox ? 'active' : ''} aria-label="Voir les projets">
+          <p>{jsonData.FilterBar.button.textright}</p>
+        </ButtonRight>
+      </ButtonContainer>
+    </SwitchContainer>
+  </MainContainer>
   );
 };
 

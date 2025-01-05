@@ -70,6 +70,21 @@ const Photo = styled.div`
         transition: 200ms ease-in-out;
     }
     `;
+
+const Description = styled.p`
+    color: ${props => props.theme.colors.gray12};
+    font-size: 1rem;
+    line-height: 1.5;
+    padding: 1rem 0;
+    transition: 200ms ease-in-out;
+
+    @media screen and (max-width: 400px) {
+    transition: 200ms ease-in-out;
+    text-align: center;
+    }
+`;
+
+
 ////////////////////////////////////////////////////////////
 //////////////////   MAIN COMPONENT   //////////////////////
 ////////////////////////////////////////////////////////////
@@ -77,14 +92,23 @@ const TitleBar = () => {
 
     const colors = useContext(ThemeContext); 
     return (
-        <MainContainer>
-            <MainInfos >
-            <Title theme={colors}>{jsonData.TitleBar.titre}</Title>
-            <Subtitle theme={colors}>{jsonData.TitleBar.soustitre}</Subtitle>
+        <MainContainer aria-labelledby="main-title" role="region">
+        <MainInfos>
+            <Title id="main-title" theme={colors}>
+                {jsonData.TitleBar.titre}
+            </Title>
+            <Subtitle theme={colors}>
+                {jsonData.TitleBar.soustitre}
+            </Subtitle>
+            <Description theme={colors}>
+                {jsonData.TitleBar.description}
+            </Description>
             <Links />
-            </MainInfos>
-            <Photo theme={colors}></Photo>
-        </MainContainer>
+        </MainInfos>
+            <Photo theme={colors} role="img" aria-label={`Illustration de ${jsonData.TitleBar.titre}`} aria-hidden="false">
+
+        </Photo>
+    </MainContainer>
     );
 }
 

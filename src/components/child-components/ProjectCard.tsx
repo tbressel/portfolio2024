@@ -97,35 +97,32 @@ const ProjectCard = (props: ProjectCardProps) => {
     const colors = useContext(ThemeContext);
 
     return (
-        <MainContainer theme={colors}>
+        <MainContainer theme={colors} aria-labelledby="project-card-title">
             <Title theme={colors}>
-                <h4>{props.data.titre} <span>{props.data.soustitre}</span></h4>
+                <h4 id="project-card-title">{props.data.titre} <span>{props.data.soustitre}</span></h4>
             </Title>
 
-            <Screen theme={colors}>
-                <img src={`./assets/${props.data.image}`} alt="" />
+            <Screen theme={colors} aria-live="polite">
+                <img 
+                    src={`./assets/${props.data.image}`} 
+                    alt={`Image du projet ${props.data.titre}`} 
+                    role="img" 
+                />
             </Screen>
 
             <Links theme={colors}>
-                <NavLink to={props.data.leftlinkurl} target="_blank">                    
-                <p>{props.data.leftlinktxt}</p>
+                <NavLink to={props.data.leftlinkurl} target="_blank" aria-label={`Lien vers ${props.data.leftlinktxt}`}>
+                    <p>{props.data.leftlinktxt}</p>
                 </NavLink>
-                <NavLink to={props.data.rightlinkurl} target="_blank">
-                <p>{props.data.rightlinktxt}</p>
+                <NavLink to={props.data.rightlinkurl} target="_blank" aria-label={`Lien vers ${props.data.rightlinktxt}`}>
+                    <p>{props.data.rightlinktxt}</p>
                 </NavLink>
             </Links>
-            
-
-
 
             <TagsList theme={colors}>
-                {props.data.tags.map((tag, index) => {
-                    return (
-                        <Tag key={index} name={tag.name} svg={tag.svg} />
-                        // <Tag key={index} tag={tag} />
-                    )
-                })}
-
+                {props.data.tags.map((tag, index) => (
+                    <Tag key={index} name={tag.name} svg={tag.svg} />
+                ))}
             </TagsList>
 
             <Description theme={colors}>

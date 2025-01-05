@@ -72,25 +72,30 @@ const Links = () => {
     <>
       <MainContainer>
         {(jsonData.Links.contact.display === "true") ? (
-          <LinkContainer theme={colors}>
-            <LinkIcon theme={colors}>
+          <LinkContainer theme={colors} aria-labelledby="contact-link">
+            <LinkIcon theme={colors} aria-hidden="true">
               <div dangerouslySetInnerHTML={{ __html: jsonData.Links.contact.svg }} />
             </LinkIcon>
             <LinkText theme={colors}>
               <CopyToClipboard text={jsonData.Links.contact.text}>
-                <span className='clickInput' onClick={() => { alert('Email copié dans le presse papier') }}>
+                <span 
+                  className='clickInput' 
+                  onClick={() => { alert('Email copié dans le presse papier') }} 
+                  role="button" 
+                  aria-label="Copier l'email dans le presse-papier"
+                  tabIndex={0}
+                >
                   {jsonData.Links.contact.text}
                 </span>
               </CopyToClipboard>
-
             </LinkText>
           </LinkContainer>
         ) : null}
 
         {(jsonData.Links.cv.display === "true") ? (
-          <NavLink to={jsonData.Links.cv.link} target="_blank">
-            <LinkContainer theme={colors}>
-              <LinkIcon theme={colors}>
+          <NavLink to={jsonData.Links.cv.link} target="_blank" aria-label="Lien vers le CV" role="link">
+            <LinkContainer theme={colors} aria-labelledby="cv-link">
+              <LinkIcon theme={colors} aria-hidden="true">
                 <div dangerouslySetInnerHTML={{ __html: jsonData.Links.cv.svg }} />
               </LinkIcon>
               <LinkText theme={colors}>
@@ -101,10 +106,11 @@ const Links = () => {
             </LinkContainer>
           </NavLink>
         ) : null}
+
         {(jsonData.Links.linkedin.display === "true") ? (
-          <NavLink to={jsonData.Links.linkedin.link} target="_blank">
-            <LinkContainer theme={colors}>
-              <LinkIcon theme={colors}>
+          <NavLink to={jsonData.Links.linkedin.link} target="_blank" aria-label="Lien vers LinkedIn" role="link">
+            <LinkContainer theme={colors} aria-labelledby="linkedin-link">
+              <LinkIcon theme={colors} aria-hidden="true">
                 <div dangerouslySetInnerHTML={{ __html: jsonData.Links.linkedin.svg }} />
               </LinkIcon>
               <LinkText theme={colors}>
@@ -117,9 +123,9 @@ const Links = () => {
         ) : null}
 
         {(jsonData.Links.github.display === "true") ? (
-          <NavLink to={jsonData.Links.github.link} target="_blank">
-            <LinkContainer theme={colors}>
-              <LinkIcon theme={colors}>
+          <NavLink to={jsonData.Links.github.link} target="_blank" aria-label="Lien vers GitHub" role="link">
+            <LinkContainer theme={colors} aria-labelledby="github-link">
+              <LinkIcon theme={colors} aria-hidden="true">
                 <div dangerouslySetInnerHTML={{ __html: jsonData.Links.github.svg }} />
               </LinkIcon>
               <LinkText theme={colors}>
