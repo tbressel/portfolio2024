@@ -59,6 +59,7 @@ const Photo = styled.div`
         display: block;
         min-width: 350px;
         min-height: 350px;
+        max-height: 200px;
         border-radius: 50%; 
         background-image: url(./assets/${jsonData.TitleBar.image});
         background-size: 100%;
